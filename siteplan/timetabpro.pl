@@ -1,6 +1,5 @@
 
-% list of a cells which can be built on
-
+% c(room, session)
 avaliableslots([
 	c(1, 1),
 	c(1, 2), c(2, 2), c(3, 2),
@@ -16,7 +15,7 @@ earlier(c(R1, S1), c(R2, S2)) :- S1 < S2.
 
 %% unique(A, B, C) :- \+ A = B, \+ B = C, \+ C = A.
 
-% units are Applications, Concepts, Programming
+% Units: Applications, Concepts, Programming
 
 schedule(A, C, P) :- avaliableslots(L),
                  member(A, L), member(C, L), member(P, L),
