@@ -35,27 +35,32 @@ father(X, Y) :- parent(X, Y), male(X).
 grandparent(X, Y) :- parent(X, Z), parent(Z, Y).
 sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \== Y.
 
-
 % question 1
 
 sister(X, Y) :- sibling(X, Y), female(X).
 brother(X, Y) :- sibling(X, Y), male(X).
 
+
 % question 2
 
-uncle(X, Y) :- brother(X, Z), parent(Z, Y).
-aunt(X, Y) :- sister(X, Z), parent(Z, Y).
+uncle(X, Y) :- parent(Z, Y), brother(X, Z).
+aunt(X, Y) :- parent(Z, Y), sister(X, Z).
 
 % question 3
 
 cousin(X, Y) :- parent(Z, X), parent(W, Y), sibling(Z, W).
 
-% quesiton 6
+% question 6
 
 greatgrandparent(X, Y) :- grandparent(Z, Y), parent(X, Z).
 
 % question 7
 
-nephew(X, Y) :- male(X), aunt(Y, X); uncle(Y, X).
-niece(X, Y) :- female(X), aunt(Y, X); uncle(Y, X)
 
+son(X, Y) :- parent(Y, X), male(X).
+daughter(X, Y) :- parent(Y, X), female(X).
+
+%% nephew(X, Y) :- male(X), aunt(Y, X); uncle(Y, X).
+%% niece(X, Y) :- female(X), aunt(Y, X); uncle(Y, X).
+nephew(X, Y) :- male(X), parent(Z, X), sibling(Y, Z).
+niece(X, Y) :- female(X), parent(Z, X), sibling(Y, Z).
