@@ -33,8 +33,8 @@ connectedbybus(X, Z) :- bus(X, Y), write2(X, Y), connectedbybus(Y, Z).
 linked(X, Y) :- rail(X, Y).
 linked(X, Y) :- bus(X, Y).
 
-connected(X, Y) :- linked(X, Y).
 connected(X, Z) :- linked(X, Y), connected(Y, Z).
+connected(X, Y) :- linked(X, Y).
 
 % question 4
 
