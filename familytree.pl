@@ -27,7 +27,7 @@ parent(barb, bob).
 
 % new children
 parent(cathy, greg).
-parent(melanie, bill).
+parent(bill, melanie).
 
 % relationships
 mother(X, Y) :- parent(X, Y), female(X).
